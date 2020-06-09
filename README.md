@@ -1,5 +1,8 @@
 # go-http-client-wrapper
 
+[![Test Status](https://github.com/BernardTolosajr/go-http-client-wrapper/workflows/Go/badge.svg)](https://github.com/BernardTolosajr/go-http-client-wrapper/actions?query=workflow%3AGo)
+[![codecov](https://codecov.io/gh/BernardTolosajr/go-http-client-wrapper/branch/master/graph/badge.svg)](https://codecov.io/gh/BernardTolosajr/go-http-client-wrapper)
+
 go-http-client-wrapper is a Go http client wrapper for calling API.
 
 ## Usage ##
