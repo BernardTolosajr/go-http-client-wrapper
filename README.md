@@ -14,9 +14,11 @@ Construct a new default client.
 
 example:
 ```go
-client := client.NewClient("http://yourbaseurl", nil)
+client := client.NewClient("https://api.github.com/", nil)
 // GET command with empty parameter
-res, _ := client.Get.Call(context.Background(), "somepath", nil)
+res, _ := client.Get.Call(context.Background(), "users/BernardTolosajr", nil)
+// result
+//map[avatar_url:https://avatars3.githubusercontent.com/u/3807955?v=4 bio:<nil> blog: company:Mynt created_at:2013-03-08T10:54:58Z email:<nil> ...]
 
 // GET command with parameter
 var params = make(map[string]string)
