@@ -18,6 +18,8 @@ type Client struct {
 	BaseURL *url.URL
 	Get     *GetMethod
 	Post    *PostMethod
+	Put     *PutMethod
+	Delete  *DeleteMethod
 }
 
 type method struct {
@@ -26,8 +28,8 @@ type method struct {
 
 // NewClient returns a new wraper http client. If a nil httpClient is
 // provided, a new http.Client will be used.
-func NewClient(baseUrl string, httpClient *http.Client) *Client {
-	baseURL, _ := url.Parse(baseUrl)
+func NewClient(base string, httpClient *http.Client) *Client {
+	baseURL, _ := url.Parse(base)
 
 	if httpClient == nil {
 		httpClient = &http.Client{}
@@ -38,13 +40,10 @@ func NewClient(baseUrl string, httpClient *http.Client) *Client {
 		BaseURL: baseURL,
 	}
 
-	c.Get = &GetMethod{
-		client: c,
-	}
-
-	c.Post = &PostMethod{
-		client: c,
-	}
+	c.Get = &GetMethod{client: c}
+	c.Post = &PostMethod{client: c}
+	c.Delete = &DeleteMethod{client: c}
+	c.Put = &PutMethod{client: c}
 
 	return c
 }
