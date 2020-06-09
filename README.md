@@ -13,16 +13,16 @@ example:
 ```go
 client := client.NewClient("http://yourbaseurl", nil)
 // GET command with empty parameter
-res, _ := client.Get.Call(context.Background(), "/somepath", nil)
+res, _ := client.Get.Call(context.Background(), "somepath", nil)
 
 // GET command with parameter
 var params = make(map[string]string)
 params["foo"] = "baz"
-res, _ := client.Get.Call(context.Background(), "/somepath", params)
+res, _ := client.Get.Call(context.Background(), "somepath", params)
 
 // POST command
 sample := &sample{}
-res, _ := client.Post.Call(context.Background(), "/somepath", sample)
+res, _ := client.Post.Call(context.Background(), "somepath", sample)
 ```
 
 ## TODO ##
