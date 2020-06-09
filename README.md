@@ -11,7 +11,7 @@ Construct a new default client.
 
 example:
 ```go
-client := pkg.NewClient("http://yourbaseurl", nil)
+client := wrapper.NewClient("http://yourbaseurl", nil)
 // GET command with empty parameter
 res, _ := client.Get.Call(context.Background(), "/somepath", nil)
 
