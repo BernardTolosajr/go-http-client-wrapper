@@ -9,7 +9,7 @@ import (
 type GetMethod method
 
 func (c *GetMethod) Call(ctx context.Context, path string, parameters map[string]string) (interface{}, error) {
-	baseUrl, err := url.Parse(fmt.Sprintf("%s/%s", c.client.BaseURL, path))
+	baseUrl, err := url.Parse(fmt.Sprintf("%s%s", c.client.BaseURL, path))
 
 	if err != nil {
 		return nil, err

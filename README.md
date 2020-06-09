@@ -4,7 +4,7 @@ go-http-client-wrapper is a Go http client wrapper for calling API.
 
 ## Usage ##
 ```go
-import "github.com/BernardTolosajr/go-http-client-wrapper/client"	// with go modules enabled (GO111MODULE=on or 
+import "github.com/BernardTolosajr/go-http-client-wrapper/client" // with go modules enabled (GO111MODULE=on or 
 ```
 
 Construct a new default client.
