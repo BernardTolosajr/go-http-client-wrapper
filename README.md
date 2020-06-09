@@ -3,7 +3,7 @@
 [![Test Status](https://github.com/BernardTolosajr/go-http-client-wrapper/workflows/Go/badge.svg)](https://github.com/BernardTolosajr/go-http-client-wrapper/actions?query=workflow%3AGo)
 [![codecov](https://codecov.io/gh/BernardTolosajr/go-http-client-wrapper/branch/master/graph/badge.svg)](https://codecov.io/gh/BernardTolosajr/go-http-client-wrapper)
 
-go-http-client-wrapper is a Go http client wrapper for calling API.
+go-http-client-wrapper is a tiny go http client wrapper for calling API.
 
 ## Usage ##
 ```go
@@ -26,8 +26,13 @@ res, _ := client.Get.Call(context.Background(), "somepath", params)
 // POST command
 sample := &sample{}
 res, _ := client.Post.Call(context.Background(), "somepath", sample)
-```
 
-## TODO ##
- - DELETE method
- - PATCH method
+// PUT command
+sample := &sample{}
+res, _ := client.Put.Call(context.Background(), "somepath/id", sample)
+
+
+// DELETE command
+sample := &sample{}
+res, _ := client.Delete.Call(context.Background(), "somepath/id", sample)
+```
