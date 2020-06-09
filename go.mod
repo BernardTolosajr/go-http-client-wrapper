@@ -1,4 +1,4 @@
-module github.com/BernardTolosajr/serviceprovider
+module github.com/BernardTolosajr/go-http-client-wrapper
 
 go 1.13
 

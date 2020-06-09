@@ -1,4 +1,4 @@
-package serviceprovider
+package pkg
 
 import (
 	"bytes"
