@@ -18,7 +18,7 @@ client := client.NewClient("https://api.github.com/", nil)
 // GET command with empty parameter
 res, _ := client.Get.Call(context.Background(), "users/BernardTolosajr", nil)
 // result
-//map[avatar_url:https://avatars3.githubusercontent.com/u/3807955?v=4 bio:<nil> blog: company:Mynt created_at:2013-03-08T10:54:58Z email:<nil> ...]
+//map[avatar_url:https://avatars3.githubusercontent.com/u/3807955?v=4...]
 
 // GET command with parameter
 var params = make(map[string]string)
