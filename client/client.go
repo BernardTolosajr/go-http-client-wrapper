@@ -23,7 +23,7 @@ type Client struct {
 }
 
 type method struct {
-	client *Client
+	*Client
 }
 
 // NewClient returns a new wraper http client. If a nil httpClient is
@@ -40,10 +40,10 @@ func NewClient(base string, httpClient *http.Client) *Client {
 		BaseURL: baseURL,
 	}
 
-	c.Get = &GetMethod{client: c}
-	c.Post = &PostMethod{client: c}
-	c.Delete = &DeleteMethod{client: c}
-	c.Put = &PutMethod{client: c}
+	c.Get = &GetMethod{c}
+	c.Post = &PostMethod{c}
+	c.Delete = &DeleteMethod{c}
+	c.Put = &PutMethod{c}
 
 	return c
 }
@@ -80,6 +80,10 @@ func (c *Client) NewRequest(method, urlStr string, body interface{}) (*http.Requ
 	return req, nil
 }
 
+// Do sends an API request and returns response. The API response is
+// JSON decoded or returned as an error
+// The provided ctx must be non-nil, if it is nil an error is returned. If it is canceled or times out,
+// ctx.Err() will be returned.
 func (c *Client) Do(ctx context.Context, req *http.Request) (interface{}, error) {
 	if ctx == nil {
 		return nil, errors.New("context must be non-nil")
@@ -106,4 +110,26 @@ func (c *Client) Do(ctx context.Context, req *http.Request) (interface{}, error)
 	}
 
 	return result, nil
+}
+
+func buildQueryParameter(uri string, parameter map[string]string) (string, error) {
+	baseURL, err := url.Parse(uri)
+
+	if err != nil {
+		return "", err
+	}
+
+	if parameter == nil {
+		return baseURL.String(), nil
+	}
+
+	if parameter != nil {
+		params := url.Values{}
+		for k, v := range parameter {
+			params.Add(k, v)
+		}
+		baseURL.RawQuery = params.Encode()
+	}
+
+	return baseURL.String(), nil
 }

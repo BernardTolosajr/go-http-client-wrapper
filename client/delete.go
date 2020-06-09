@@ -3,32 +3,19 @@ package client
 import (
 	"context"
 	"fmt"
-	"net/url"
 )
 
 type DeleteMethod method
 
-func (c *DeleteMethod) Call(ctx context.Context, path string, parameters map[string]string) (interface{}, error) {
-	baseUrl, err := url.Parse(fmt.Sprintf("%s%s", c.client.BaseURL, path))
+func (c *DeleteMethod) Call(ctx context.Context, path string, parameter map[string]string) (interface{}, error) {
+	url, err := buildQueryParameter(fmt.Sprintf("%s%s", c.BaseURL, path), parameter)
 
+	req, err := c.NewRequest("DELETE", url, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	if parameters != nil {
-		params := url.Values{}
-		for k, v := range parameters {
-			params.Add(k, v)
-		}
-		baseUrl.RawQuery = params.Encode()
-	}
-
-	req, err := c.client.NewRequest("DELETE", baseUrl.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	resp, err := c.client.Do(ctx, req)
+	resp, err := c.Do(ctx, req)
 
 	if err != nil {
 		return nil, err
