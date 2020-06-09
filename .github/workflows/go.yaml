@@ -25,11 +25,9 @@ jobs:
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
         fi
-    - name: Build
-      run: go build -v .
-
+    
     - name: Run go test
-      run: go test -v -race -coverprofile coverage.txt -covermode atomic ./services ./handler
+      run: go test -v -race -coverprofile coverage.txt -covermode atomic ./client
       
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
