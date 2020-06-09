@@ -4,14 +4,14 @@ go-http-client-wrapper is a Go http client wrapper for calling API.
 
 ## Usage ##
 ```go
-import "github.com/BernardTolosajr/go-http-client-wrapper/pkg"	// with go modules enabled (GO111MODULE=on or 
+import "github.com/BernardTolosajr/go-http-client-wrapper/client"	// with go modules enabled (GO111MODULE=on or 
 ```
 
 Construct a new default client.
 
 example:
 ```go
-client := wrapper.NewClient("http://yourbaseurl", nil)
+client := client.NewClient("http://yourbaseurl", nil)
 // GET command with empty parameter
 res, _ := client.Get.Call(context.Background(), "/somepath", nil)
 

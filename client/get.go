@@ -1,4 +1,4 @@
-package wrapper
+package client
 
 import (
 	"context"
