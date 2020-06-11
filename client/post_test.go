@@ -32,7 +32,7 @@ func TestPostMethod(t *testing.T) {
 		Name: "bt",
 	}
 
-	resp, err := c.Post.Call(context.TODO(), "/foo", payload)
+	resp, err := c.Post.Call(context.TODO(), "foo", payload)
 	if err != nil {
 		panic(err)
 	}

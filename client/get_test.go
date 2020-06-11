@@ -18,7 +18,7 @@ func TestGet(t *testing.T) {
 
 	c := NewClient(HOST, nil)
 
-	resp, err := c.Get.Call(context.TODO(), "/path", nil)
+	resp, err := c.Get.Call(context.TODO(), "path", nil)
 	if err != nil {
 		panic(err)
 	}
@@ -41,5 +41,5 @@ func TestGetMethodWithParams(t *testing.T) {
 	var params = make(map[string]string)
 	params["foo"] = "baz"
 
-	c.Get.Call(context.TODO(), "/path", params)
+	c.Get.Call(context.TODO(), "path", params)
 }
